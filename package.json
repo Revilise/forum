@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "iron-session": "^6.3.1",
+    "next": "^13.0.3",
+    "pg": "^8.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.2",
+    "sass": "^1.56.1",
+    "swr": "^1.3.0"
+  },
+  "name": "forum",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "next start",
+    "dev": "next dev",
+    "build": "next build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Revilise/forum.git"
+  },
+  "author": "Revilise",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Revilise/forum/issues"
+  },
+  "homepage": "https://github.com/Revilise/forum#readme",
+  "description": ""
+}

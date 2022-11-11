@@ -1,0 +1,8 @@
+:root {
+    --dt-primary-background: #1E1E1E;
+    --dt-background: #262627;
+    --dt-primary-green: #7DB88D;
+    --dt-secondary-gray: #323338;
+    --dt-green-gradient: linear-gradient(180deg, rgba(50, 241, 104, 0.2) 0%, rgba(125, 184, 141, 0.2) 100%), #7DB88D;
+    --dt-primary-font-color: #FFFFFF;
+}
