@@ -1,9 +1,11 @@
   import Layout from "../components/layout/Layout";
+  import SidebarFactory from "../components/sidebar/Sidebar";
+  import {roleTypes} from "../lib/roles/roleTypes";
 
-export default function IndexPage(){
+export default function IndexPage() {
     return (
         <Layout title={"forum"}>
-            home
+            <SidebarFactory type={roleTypes.moder} />
         </Layout>
     )
 }

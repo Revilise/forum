@@ -1,5 +1,5 @@
-import Header from "../Header/Header";
-import Footer from "../Footer/Fotoer";
+import Header from "../header/Header";
+import Footer from "../footer/Fotoer";
 
 import cl from './layout.module.scss';
 import Head from "next/head";

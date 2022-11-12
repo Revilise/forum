@@ -9,7 +9,7 @@ module.exports = {
         SESSION_PASSWORD: 'strong-pass-ever',
         SESSION_COOKIE: 'forum/auth',
 
-        NODE_ENV: 'dev' || 'production',
+        // NODE_ENV: 'dev' || 'production',
 
         NEXT_PUBLIC_APP_HOSTNAME: 'localhost:3000'
     }
