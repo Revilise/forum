@@ -1,0 +1,21 @@
+@mixin styleIcons($class) {
+  path {
+    transition: .2s;
+    stroke: var(--default-icon);
+  }
+  &__active, &:hover {
+    path {
+      stroke: var(--#{$class});
+    }
+  }
+}
+
+.default-icon {
+  @include styleIcons('default-icon')
+}
+.green {
+  @include styleIcons('green')
+}
+.red {
+  @include styleIcons('red')
+}
