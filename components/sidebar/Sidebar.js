@@ -1,5 +1,9 @@
 import cl from './sidebar.module.scss';
 import {roleTypes} from "../../lib/roles/roleTypes";
+import {Home, LogOut, PlusCircle, Settings, User} from "../icon/icons";
+import NavItem from "../navigation/NavItem";
+import {Line} from "../line/Line";
+import Navigation from "../navigation/Navigation";
 
 const Sidebar = ({children}) => (
     <div className={cl.sidebar}>
@@ -21,7 +25,14 @@ export default function SidebarFactory({type}) {
 
 export const UserSidebar = () => (
     <Sidebar>
-        user
+        <Navigation>
+            <NavItem href={"/"} Component={Home} ActiveComponent={Home.Active} />
+            <NavItem href={"/profile"} Component={User} ActiveComponent={User.Active} />
+            <NavItem href={"/create"} Component={PlusCircle} ActiveComponent={PlusCircle.Active} />
+            <Line />
+            <NavItem href={"/settings"} Component={Settings} ActiveComponent={Settings.Active} />
+            <NavItem href={"/logout"} Component={LogOut} ActiveComponent={LogOut.Active} />
+        </Navigation>
     </Sidebar>
 )
 export const AdminSidebar = () => (

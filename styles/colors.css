@@ -1,8 +1,14 @@
 :root {
+    --dt-secondary-background: #161515;
     --dt-primary-background: #1E1E1E;
-    --dt-background: #262627;
-    --dt-primary-green: #7DB88D;
-    --dt-secondary-gray: #323338;
+    --dt-containers-background: #262627;
+    --dt-border: #2E2E31;
+    --dt-border-darker: #1F1F1F;
     --dt-green-gradient: linear-gradient(180deg, rgba(50, 241, 104, 0.2) 0%, rgba(125, 184, 141, 0.2) 100%), #7DB88D;
-    --dt-primary-font-color: #FFFFFF;
+    --dt-red-gradient: linear-gradient(152.19deg, rgba(226, 46, 22, 0.5) 9.71%, rgba(184, 125, 125, 0) 140.49%), #D64343;
+    --dt-primary-font: #FFFFFF;
+
+    --green: #7DB88D;
+    --red: #D64343;
+    --default-icon: #ffffff;
 }

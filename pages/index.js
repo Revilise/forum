@@ -5,7 +5,7 @@
 export default function IndexPage() {
     return (
         <Layout title={"forum"}>
-            <SidebarFactory type={roleTypes.moder} />
+            <SidebarFactory type={roleTypes.user} />
         </Layout>
     )
 }
