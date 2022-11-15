@@ -1,11 +1,11 @@
 @import "styles/mixins/container";
 
 .search {
+  @include container;
   display: flex;
   align-items: center;
   border-radius: 8px;
   overflow: hidden;
-  @include container;
   flex-grow: 1;
   .input {
     padding: 8px 16px;

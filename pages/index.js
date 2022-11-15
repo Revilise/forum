@@ -17,7 +17,6 @@ export default function IndexPage() {
                     <Search />
                     <Breadcrumb items={items} />
                 </Layout.HorizontalPanel>
-
             </Layout.Content>
         </Layout>
     )
