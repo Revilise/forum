@@ -1,0 +1,10 @@
+@mixin textarea() {
+  resize: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  &::placeholder {
+    color: var(--alfa-white)
+  }
+}

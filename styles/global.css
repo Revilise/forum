@@ -3,14 +3,14 @@
 * {
     margin: 0;
     padding: 0;
+    /* bad or ok ??? */
+    color: var(--dt-primary-font);
 }
 body {
     line-height: 27px;
-    color: var(--dt-primary-font);
     font-family: 'Nunito';
     background: var(--dt-primary-background);
 }
 a {
-    color: var(--dt-primary-font);
     text-decoration: none;
 }

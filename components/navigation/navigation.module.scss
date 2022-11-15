@@ -1,6 +1,5 @@
 .item {
   box-sizing: border-box;
-  padding: 12px;
   border-radius: 8px;
   transition: 0.2s;
   display: flex;
@@ -8,6 +7,9 @@
   border: 2px solid var(--dt-secondary-background);
   &:hover {
     border: 2px solid var(--dt-border-darker);
+  }
+  > * {
+    padding: 12px;
   }
 }
 

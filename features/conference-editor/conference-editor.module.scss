@@ -1,0 +1,18 @@
+@import "styles/mixins/textarea";
+
+.container {
+  display: flex;
+  gap: 36px;
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  > &__input {
+    @include textarea;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 36px;
+
+  }
+}
