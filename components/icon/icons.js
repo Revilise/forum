@@ -10,7 +10,7 @@ const IconWrapper = ({children, cssClass, isActive}) => {
 
 function Icon(
     SVGComponent,
-    classStyle
+    classStyle = "default-icon"
 ) {
     const Component = () => <IconWrapper cssClass={classStyle}><SVGComponent/></IconWrapper>
     Component.Active = () => <IconWrapper isActive={true} cssClass={classStyle}><SVGComponent/></IconWrapper>
@@ -120,7 +120,49 @@ class Icons {
         ),
         "alfa-white"
     )
+
+    static Save = new Icon(
+        () => (
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.4541 21H5.4541C4.92367 21 4.41496 20.7893 4.03989 20.4142C3.66482 20.0391 3.4541 19.5304 3.4541 19V5C3.4541 4.46957 3.66482 3.96086 4.03989 3.58579C4.41496 3.21071 4.92367 3 5.4541 3H16.4541L21.4541 8V19C21.4541 19.5304 21.2434 20.0391 20.8683 20.4142C20.4932 20.7893 19.9845 21 19.4541 21Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M17.4541 21V13H7.4541V21" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M7.4541 3V8H15.4541" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        ),
+        "green"
+    )
+
+    static Trash = new Icon(
+        () => (
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.4541 6H5.4541H21.4541" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M8.4541 6V4C8.4541 3.46957 8.66482 2.96086 9.03989 2.58579C9.41496 2.21071 9.92367 2 10.4541 2H14.4541C14.9845 2 15.4932 2.21071 15.8683 2.58579C16.2434 2.96086 16.4541 3.46957 16.4541 4V6M19.4541 6V20C19.4541 20.5304 19.2434 21.0391 18.8683 21.4142C18.4932 21.7893 17.9845 22 17.4541 22H7.4541C6.92367 22 6.41496 21.7893 6.03989 21.4142C5.66482 21.0391 5.4541 20.5304 5.4541 20V6H19.4541Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M10.4541 11V17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M14.4541 11V17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        ),
+        "red"
+    )
+
+    static Image = new Icon(
+        () => (
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.4541 3H5.4541C4.34953 3 3.4541 3.89543 3.4541 5V19C3.4541 20.1046 4.34953 21 5.4541 21H19.4541C20.5587 21 21.4541 20.1046 21.4541 19V5C21.4541 3.89543 20.5587 3 19.4541 3Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M8.9541 10C9.78253 10 10.4541 9.32843 10.4541 8.5C10.4541 7.67157 9.78253 7 8.9541 7C8.12567 7 7.4541 7.67157 7.4541 8.5C7.4541 9.32843 8.12567 10 8.9541 10Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M21.4541 15L16.4541 10L5.4541 21" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        )
+    )
+
+    static Link = new Icon(
+        () => (
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.4541 13C10.8836 13.5741 11.4315 14.0492 12.0607 14.3929C12.6898 14.7367 13.3856 14.9411 14.1008 14.9923C14.8159 15.0435 15.5337 14.9404 16.2054 14.6898C16.8772 14.4392 17.4872 14.0471 17.9941 13.54L20.9941 10.54C21.9049 9.59699 22.4089 8.33397 22.3975 7.02299C22.3861 5.71201 21.8602 4.45794 20.9332 3.5309C20.0062 2.60386 18.7521 2.07802 17.4411 2.06663C16.1301 2.05523 14.8671 2.55921 13.9241 3.47L12.2041 5.18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M14.4541 11C14.0246 10.4259 13.4767 9.95081 12.8475 9.60706C12.2183 9.2633 11.5225 9.05888 10.8074 9.00766C10.0923 8.95645 9.37447 9.05963 8.70271 9.31021C8.03095 9.5608 7.42094 9.95293 6.91406 10.46L3.91406 13.46C3.00327 14.403 2.49929 15.666 2.51069 16.977C2.52208 18.288 3.04792 19.542 3.97496 20.4691C4.902 21.3961 6.15607 21.922 7.46705 21.9334C8.77803 21.9448 10.041 21.4408 10.9841 20.53L12.6941 18.82" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        )
+    )
 }
 
 export default Icons;
-export const { Home, ChevronDown, ChevronUp, LogIn, LogOut, PlusCircle, Search, User, Settings } = Icons;
+export const { Home, ChevronDown, ChevronUp, LogIn, LogOut, PlusCircle, Search, User, Settings, Save, Image, Link, Trash } = Icons;

@@ -1,4 +1,5 @@
 @import "styles/mixins/textarea";
+@import "styles/mixins/container";
 
 .container {
   display: flex;
@@ -11,8 +12,38 @@
   > &__input {
     @include textarea;
     width: 100%;
-    box-sizing: border-box;
     font-size: 36px;
+    font-weight: bold;
+  }
+}
 
+.fixed_wrapper {
+  width: 52px;
+}
+.edit_panel {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  background: var(--dt-containers-background);
+  padding: 8px;
+  gap: 8px;
+  position: fixed;
+  &__button {
+    width: 36px;
+    height: 36px;
+    background: inherit;
+    border: none;
+    border-radius: 8px;
+    font-size: 24px;
+    line-height: 0;
+    cursor: pointer;
+    transition: .2s;
+    font-family: "Times New Roman", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background: var(--dt-secondary-background);
+    }
   }
 }
