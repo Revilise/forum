@@ -10,3 +10,7 @@ body {
     font-family: 'Nunito';
     background: var(--dt-primary-background);
 }
+a {
+    color: var(--dt-primary-font);
+    text-decoration: none;
+}

@@ -6,6 +6,7 @@
   border-radius: 8px;
   overflow: hidden;
   @include container;
+  flex-grow: 1;
   .input {
     padding: 8px 16px;
     font-size: 16px;

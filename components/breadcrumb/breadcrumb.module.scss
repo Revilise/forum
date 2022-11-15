@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  gap: 24px;
+  justify-content: end;
+  .link {
+    color: var(--dt-primary-font);
+    :hover {
+      color: var(--green);
+    }
+    &__active a{
+      color: var(--green);
+    }
+  }
+}

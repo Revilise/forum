@@ -22,3 +22,8 @@ Layout.Content = ({children}) => (
         {children}
     </div>
 )
+Layout.HorizontalPanel = ({children}) => (
+    <div className={cl.layout__horiz_panel}>
+        {children}
+    </div>
+)
