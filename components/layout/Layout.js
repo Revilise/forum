@@ -1,20 +1,24 @@
-import Header from "../header/Header";
-import Footer from "../footer/Fotoer";
-
 import cl from './layout.module.scss';
 import Head from "next/head";
+import SidebarFactory from "../sidebar/Sidebar";
+import {roleTypes} from "../../lib/roles/roleTypes";
 
-export default function Layout({children, title}) {
+export default function Layout({children, title, sidebar}) {
     return (
         <div className={cl.layout}>
             <Head>
                 <title>{title}</title>
             </Head>
-            <Header />
-            <div className={cl.layer_content}>
-                {children}
-            </div>
-            <Footer />
+            {
+                sidebar ? <SidebarFactory type={roleTypes.user} /> : <></>
+            }
+            { children }
         </div>
     )
 }
+
+Layout.Content = ({children}) => (
+    <div className={cl.layout_content}>
+        {children}
+    </div>
+)

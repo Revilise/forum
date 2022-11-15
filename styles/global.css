@@ -8,4 +8,5 @@ body {
     line-height: 27px;
     color: var(--dt-primary-font);
     font-family: 'Nunito';
+    background: var(--dt-primary-background);
 }

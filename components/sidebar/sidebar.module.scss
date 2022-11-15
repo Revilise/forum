@@ -1,11 +1,10 @@
 .sidebar {
   background: var(--dt-secondary-background);
-  width: 104px;
   display: flex;
   height: 100vh;
-  position: fixed;
-  right: 0;
-  top: 0;
   justify-content: center;
+  grid-column: 5;
+  grid-row-start: 1;
+  box-sizing: border-box;
 }
 

@@ -1,0 +1,4 @@
+@mixin container() {
+  background: var(--dt-containers-background);
+  border: 2px solid var(--dt-border);
+}
