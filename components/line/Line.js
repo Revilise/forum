@@ -1,3 +1,3 @@
 import cl from './line.module.scss';
 
-export const Line = () => <hr className={cl.line} />
+export default function Line (){ return <hr className={cl.line} /> }

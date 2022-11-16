@@ -2,7 +2,7 @@ import cl from './sidebar.module.scss';
 import {roleTypes} from "../../lib/roles/roleTypes";
 import {Home, LogOut, PlusCircle, Settings, User} from "../icon/icons";
 import NavItem from "../navigation/NavItem";
-import {Line} from "../line/Line";
+import Line from "../line/Line";
 import Navigation from "../navigation/Navigation";
 
 const Sidebar = ({children}) => (

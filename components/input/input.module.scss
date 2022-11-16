@@ -1,0 +1,13 @@
+@import "styles/mixins/container";
+
+.input {
+  @include container;
+  outline: none;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 8px 16px;
+  font-family: "Nunito";
+  &::placeholder {
+    color: var(--alfa-white);
+  }
+}

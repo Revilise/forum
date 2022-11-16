@@ -1,6 +1,6 @@
 import cl from './conference-editor.module.scss';
 import {Save, Image, Trash} from "../../components/icon/icons";
-import {Line} from "../../components/line/Line";
+import Line from "../../components/line/Line";
 
 const Button = ({
    children = <></>, onClick

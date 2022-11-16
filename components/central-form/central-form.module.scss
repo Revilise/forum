@@ -1,0 +1,14 @@
+.form {
+  width: 383px;
+  margin: 0 auto;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  align-self: center;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  &_header {
+    text-align: left;
+  }
+}
