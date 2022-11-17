@@ -1,8 +1,11 @@
-  import Layout from "../components/layout/Layout";
-  import {roleTypes} from "../lib/roles/roleTypes";
-  import Search from "../components/search/Search";
-  import Breadcrumb from "../components/breadcrumb/Breadcrumb";
-  import ConferenceList from "../components/conference-list/ConferenceList"
+import Layout from "../components/layout/Layout";
+import {roleTypes} from "../lib/roles/roleTypes";
+import Search from "../components/search/Search";
+import Breadcrumb from "../components/breadcrumb/Breadcrumb";
+import ConferenceList from "../components/conference-list/ConferenceList";
+import redirectUnauthorized from "../lib/auth/redirectUnauthorized";
+
+export const getServerSideProps = redirectUnauthorized;
 
 export default function IndexPage() {
     const links = [

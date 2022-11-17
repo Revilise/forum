@@ -6,5 +6,5 @@ export default function Input({
     onChange,
     required
 }) {
-    return <input className={cl.input} placeholder={placeholder} value={value} onChange={onChange} required={required}/>
+    return <input className={cl.input} placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} required={required}/>
 }

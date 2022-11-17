@@ -6,7 +6,7 @@ module.exports = {
         DB_PORT: '5432',
         DB_NAME: 'forum_db',
 
-        SESSION_PASSWORD: 'strong-pass-ever',
+        SESSION_PASSWORD: 'strong-pass-ever-for-32-symbols-bruuuuuuh',
         SESSION_COOKIE: 'forum/auth',
 
         // NODE_ENV: 'dev' || 'production',
