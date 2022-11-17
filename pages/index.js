@@ -12,7 +12,7 @@ export default function IndexPage() {
     ]
 
     const items = [
-        { title: "title", date: "10-01-2020", content: "content is here".repeat(10), vote: 1 }
+        { id: 1, title: "title", date: "10-01-2020", content: "content is here".repeat(50), vote: 1 }
     ]
 
     return (

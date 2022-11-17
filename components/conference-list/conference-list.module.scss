@@ -1,3 +1,5 @@
+@import "styles/mixins/container";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,5 +7,13 @@
 }
 
 .item {
+  display: flex;
+  gap: 16px;
+  cursor: pointer;
+  &_content {
+    padding: 24px;
+    @include container;
+    border-radius: 16px;
+  }
 
 }
