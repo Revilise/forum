@@ -1,6 +1,9 @@
 import {useRouter} from "next/router";
 import Layout from "../../components/layout/Layout";
 import {roleTypes} from "../../lib/roles/roleTypes";
+import redirectUnauthorized from "../../lib/auth/redirectUnauthorized";
+
+export const getServerSideProps = redirectUnauthorized;
 
 export default function ConferencePage() {
     const router = useRouter();

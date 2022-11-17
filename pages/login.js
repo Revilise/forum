@@ -4,16 +4,31 @@ import Input from "../components/input/Input";
 import {useState} from "react";
 import axios from 'axios';
 import Router from "next/router";
+import useUser from "../lib/auth/useUser";
 
 export default function LoginPage() {
 
-    function onsubmit() {
-        axios
-            .post("http://localhost:3000/api/login", {login, password})
-            .then(res => {
-                console.log(res.data)
-                if (res.data.ok) Router.push('/');
-            })
+    const { mutateUser } = useUser({
+        redirectTo: '/',
+        redirectIfFound: true
+    });
+
+    async function onsubmit() {
+        mutateUser(
+            await (async function() {
+                const res = await fetch('http://localhost:3000/api/login', {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({password, login})
+                })
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    return data;
+                }
+            })()
+        )
     }
 
     const [login, changeLogin] = useState("userlog");

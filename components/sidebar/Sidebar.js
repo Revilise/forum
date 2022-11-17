@@ -31,7 +31,6 @@ export const UserSidebar = () => (
             <NavItem href={"/create"} Component={PlusCircle} ActiveComponent={PlusCircle.Active} />
             <Line />
             <NavItem href={"/settings"} Component={Settings} ActiveComponent={Settings.Active} />
-            <NavItem href={"/logout"} Component={LogOut} ActiveComponent={LogOut.Active} />
         </Navigation>
     </Sidebar>
 )

@@ -8,6 +8,7 @@ import redirectUnauthorized from "../lib/auth/redirectUnauthorized";
 export const getServerSideProps = redirectUnauthorized;
 
 export default function IndexPage() {
+
     const links = [
         { href: "/", text: "all" },
         { href: "/my-conferences", text: "my conferences"},

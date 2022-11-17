@@ -15,7 +15,7 @@ async function LoginRoute(req, res) {
 
             req.session.user = {...user.rows[0], isLogged: true};
             req.session.save().then(() => {
-                res.json({ok: true})
+                res.json(req.session.user)
             });
         })
         .catch(err => console.log(err))
