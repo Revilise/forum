@@ -1,6 +1,6 @@
 import cl from './vote-panel.module.scss';
 import {VoteDown, VoteUp} from "./Vote";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 
 

@@ -4,12 +4,6 @@ import {useEffect} from "react";
 
 function VoteHOC(WrappedComponent, setVote, vote) {
 
-    // const { vote, setVote } = useVote();
-
-    useEffect(() => {
-
-    }, [vote]);
-
     return function() {
         const onVote = (value) => {
             // react query to api for updating value
