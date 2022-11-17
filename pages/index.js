@@ -2,12 +2,17 @@
   import {roleTypes} from "../lib/roles/roleTypes";
   import Search from "../components/search/Search";
   import Breadcrumb from "../components/breadcrumb/Breadcrumb";
+  import ConferenceList from "../components/conference-list/ConferenceList"
 
 export default function IndexPage() {
-    const items = [
+    const links = [
         { href: "/", text: "all" },
         { href: "/my-conferences", text: "my conferences"},
         { href: "/part-in", text: "part in conferences"}
+    ]
+
+    const items = [
+        { title: "title", date: "10-01-2020", content: "content is here".repeat(10), vote: 1 }
     ]
 
     return (
@@ -15,8 +20,9 @@ export default function IndexPage() {
             <Layout.Content>
                 <Layout.HorizontalPanel>
                     <Search />
-                    <Breadcrumb items={items} />
+                    <Breadcrumb items={links} />
                 </Layout.HorizontalPanel>
+                <ConferenceList items={items} />
             </Layout.Content>
         </Layout>
     )

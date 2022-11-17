@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  width: fit-content;
+  > button {
+    display: flex;
+    line-height: 0;
+    border-radius: 8px;
+    > * {
+      padding: 8px;
+    }
+  }
+  .vote {
+    transition: .2s;
+    background: var(--dt-containers-background);
+    border: 2px solid var(--dt-containers-background);
+    &__up {
+      border: 2px solid var(--green);
+      background: transparent;
+    }
+    &__down {
+      border: 2px solid var(--red);
+      background: transparent;
+    }
+  }
+}
