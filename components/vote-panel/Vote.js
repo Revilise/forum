@@ -6,6 +6,7 @@ function VoteHOC(WrappedComponent, setVote, vote) {
 
     return function() {
         const onVote = (value) => {
+            // TODO: ON VOTE
             // react query to api for updating value
             // then
             // redux changes store
@@ -13,6 +14,7 @@ function VoteHOC(WrappedComponent, setVote, vote) {
         }
 
         const onUnvote = () => {
+            // TODO: ON UNVOTE
             // react query to api for updating value into 0
             // then
             // redux changes store
