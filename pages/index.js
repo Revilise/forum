@@ -4,6 +4,7 @@ import Search from "../components/search/Search";
 import Breadcrumb from "../components/breadcrumb/Breadcrumb";
 import ConferenceList from "../components/conference-list/ConferenceList";
 import redirectUnauthorized from "../lib/auth/redirectUnauthorized";
+import useUser from "../lib/auth/useUser";
 
 export const getServerSideProps = redirectUnauthorized;
 

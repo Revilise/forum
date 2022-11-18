@@ -11,6 +11,6 @@ module.exports = {
 
         // NODE_ENV: 'dev' || 'production',
 
-        NEXT_PUBLIC_APP_HOSTNAME: 'localhost:3000'
+        NEXT_PUBLIC_APP_HOSTNAME: 'http://localhost:3000'
     }
 }
