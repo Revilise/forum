@@ -4,7 +4,6 @@ import Line from "../../components/line/Line";
 import {useDispatch, useSelector} from "react-redux";
 import {clearAll, selectConference} from "./ConferenceEditorSlice";
 import axios from "axios";
-import useUser from "../../lib/auth/useUser";
 
 const Button = ({
    children = <></>, onClick
