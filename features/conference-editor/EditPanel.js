@@ -15,7 +15,6 @@ const Button = ({
 export default function EditPanel() {
     const dispatch = useDispatch();
     const { title, text } = useSelector(selectConference);
-    const { user } = useUser();
 
     const items = [
         {
