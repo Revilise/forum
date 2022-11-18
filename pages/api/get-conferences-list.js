@@ -3,7 +3,7 @@ import {withIronSessionApiRoute} from "iron-session/next";
 import {sessionOptions} from "../../lib/auth/session";
 
 async function GetConferenceListRoute(req, res) {
-    pool
+    await pool
         .query({
             text: `
                 SELECT

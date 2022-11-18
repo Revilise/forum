@@ -4,7 +4,7 @@ import {sessionOptions} from "../../lib/auth/session";
 
 async function PostConferenceRoute(req, res) {
     const {title, text} = req.body;
-    pool
+    await pool
         .query({
         text: `
             INSERT INTO conferences 

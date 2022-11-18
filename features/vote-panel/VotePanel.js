@@ -5,10 +5,11 @@ import {useState} from "react";
 export default function VotePanel(props) {
 
     const [ vote, setVote ] = useState(props.vote);
+
     return (
         <div className={cl.container}>
-            <VoteUp vote={vote} setVote={setVote}/>
-            <VoteDown vote={vote} setVote={setVote} />
+            <VoteUp conference_id={props.conference_id} vote={vote} setVote={setVote}/>
+            <VoteDown conference_id={props.conference_id} vote={vote} setVote={setVote} />
         </div>
     )
 }
