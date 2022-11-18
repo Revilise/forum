@@ -1,6 +1,8 @@
 import cl from './conference-editor.module.scss';
 import {Save, Image, Trash} from "../../components/icon/icons";
 import Line from "../../components/line/Line";
+import {useDispatch} from "react-redux";
+import {clearAll} from "./ConferenceEditorSlice";
 
 const Button = ({
    children = <></>, onClick
@@ -9,10 +11,15 @@ const Button = ({
 )
 
 export default function EditPanel() {
+    const dispatch = useDispatch();
+
     const items = [
         {
             Component: Save,
-            handler: () => {}
+            handler: (e) => {
+                e.preventDefault();
+                dispatch(clearAll());
+            }
         },
         {
             isLine: true
@@ -38,7 +45,10 @@ export default function EditPanel() {
         },
         {
             Component: Trash,
-            handler: () => {}
+            handler: (e) => {
+                e.preventDefault();
+                dispatch(clearAll());
+            }
         }
     ]
 

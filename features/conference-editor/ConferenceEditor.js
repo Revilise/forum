@@ -3,11 +3,8 @@ import EditPanel from "./EditPanel";
 import Editor from "./Editor";
 
 export default function ConferenceEditor() {
-    function onSubmit(e) {
-        e.preventDefault();
-    }
     return (
-        <form onSubmit={onSubmit} className={cl.container}>
+        <form className={cl.container}>
             <EditPanel />
             <Editor />
         </form>

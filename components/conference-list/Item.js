@@ -1,5 +1,5 @@
 import cl from './conference-list.module.scss';
-import VotePanel from '../vote-panel/VotePanel';
+import VotePanel from '../../features/vote-panel/VotePanel';
 import Router from "next/router";
 
 export default function Item({
@@ -14,8 +14,8 @@ export default function Item({
     }
 
     return (
-        <div onClick={redirect} className={cl.item}>
-            <div className={cl.item_content}>
+        <div className={cl.item}>
+            <div onClick={redirect} className={cl.item_content}>
                 <h3>{title}</h3>
                 <span>{date}</span>
                 <p>{content.length > 255 ? content.substring(0, 140) + " ..." : content }</p>

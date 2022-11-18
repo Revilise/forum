@@ -1,5 +1,5 @@
 import cl from './vote-panel.module.scss';
-import Icons from "../icon/icons";
+import Icons from "../../components/icon/icons";
 import {useEffect} from "react";
 
 function VoteHOC(WrappedComponent, setVote, vote) {
