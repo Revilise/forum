@@ -33,16 +33,45 @@ CREATE TABLE comments (
     comment_id SERIAL PRIMARY KEY,
     comment_text VARCHAR(255),
     datetime timestamp,
-    author_id int references users(user_id),
-    conference_id int references conferences(conference_id)
+    author_id int
+        references users(user_id)
+        on DELETE CASCADE on UPDATE CASCADE,
+    conference_id int
+        references conferences(conference_id)
+        on DELETE CASCADE on UPDATE CASCADE
 );
+
+-- DROP TABLE votes;
 
 CREATE TABLE votes (
     vote_id SERIAL PRIMARY KEY,
-    conference_id int references conferences(conference_id),
+    conference_id int
+        references conferences(conference_id)
+                   on DELETE CASCADE on UPDATE CASCADE,
     user_id int references users(user_id),
     vote int
 );
+
+-- TRIGGERS ------------------------------------
+
+CREATE OR REPLACE FUNCTION on_conference_insert()
+RETURNS TRIGGER
+    LANGUAGE plpgsql
+    AS
+$$
+BEGIN
+    INSERT INTO votes (conference_id, user_id, vote)
+    VALUES (NEW.conference_id, NEW.author_id, 0);
+
+    RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER trigger_on_conference_insert
+    AFTER INSERT
+    ON conferences
+    FOR EACH ROW
+    EXECUTE PROCEDURE on_conference_insert();
 
 -- INSERT INTO TABLES --------------------------
 
@@ -55,3 +84,6 @@ INSERT INTO files (file_name, file_path) VALUES (null, null);
 INSERT INTO users (user_name, user_email, user_login, user_password, role_id, avatar_id) VALUES (
     'User', 'email@c.ru', 'userlog', md5('123'), 3, 1
 );
+
+INSERT INTO conferences (conference_name, conference_text, author_id, datetime)
+VALUES ($1, $2, $3, NOW())

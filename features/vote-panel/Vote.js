@@ -1,5 +1,5 @@
 import cl from './vote-panel.module.scss';
-import Icons from "../icon/icons";
+import Icons from "../../components/icon/icons";
 
 function VoteHOC(WrappedComponent, setVote, vote) {
 

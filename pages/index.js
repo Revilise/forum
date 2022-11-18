@@ -4,6 +4,9 @@ import Search from "../components/search/Search";
 import Breadcrumb from "../components/breadcrumb/Breadcrumb";
 import ConferenceList from "../components/conference-list/ConferenceList";
 import redirectUnauthorized from "../lib/auth/redirectUnauthorized";
+import useUser from "../lib/auth/useUser";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 export const getServerSideProps = redirectUnauthorized;
 
@@ -15,9 +18,15 @@ export default function IndexPage() {
         { href: "/part-in", text: "part in conferences"}
     ]
 
-    const items = [
-        { id: 1, title: "title", date: "10-01-2020", content: "content is here".repeat(50), vote: 1 }
-    ]
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        axios
+            .get( process.env.NEXT_PUBLIC_APP_HOSTNAME + '/api/get-conferences-list')
+            .then(res => {
+                setItems(res.data)
+            })
+    }, [])
 
     return (
         <Layout title={"forum"} sidebar={roleTypes.user}>
