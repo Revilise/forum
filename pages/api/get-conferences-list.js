@@ -10,7 +10,7 @@ async function GetConferenceListRoute(req, res) {
                     conferences.conference_id,
                     conference_name as title,
                     conference_text as text,
-                    datetime,
+                    TO_CHAR(datetime :: DATE, 'dd-mm-yyyy') as datetime,
                     u.vote as vote
                 FROM conferences LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = $1;
             `,
