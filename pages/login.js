@@ -37,7 +37,7 @@ export default function LoginPage() {
                 <Input value={login} onChange={changeLogin} placeholder={"LOGIN"} />
                 <Input value={password} onChange={changePassword} placeholder={"PASSWORD"} />
                 <Form.Button onClick={onsubmit}>
-                    <p>login</p>
+                    login
                     <LogIn />
                 </Form.Button>
             </Form>

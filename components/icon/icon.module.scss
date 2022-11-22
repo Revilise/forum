@@ -1,5 +1,6 @@
 @mixin styleIcons($class) {
   cursor: pointer;
+  display: flex;
   path {
     transition: .2s;
     stroke: var(--default-icon);
