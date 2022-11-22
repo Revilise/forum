@@ -4,9 +4,9 @@ import Search from "../components/search/Search";
 import Breadcrumb from "../components/breadcrumb/Breadcrumb";
 import ConferenceList from "../components/conference-list/ConferenceList";
 import redirectUnauthorized from "../lib/auth/redirectUnauthorized";
-import useUser from "../lib/auth/useUser";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import React from 'react'
 
 export const getServerSideProps = redirectUnauthorized;
 
@@ -22,10 +22,11 @@ export default function IndexPage() {
 
     useEffect(() => {
         axios
-            .get( process.env.NEXT_PUBLIC_APP_HOSTNAME + '/api/get-conferences-list')
+            .get( process.env.NEXT_PUBLIC_APP_HOSTNAME + '/api/conferences/get-conferences-list')
             .then(res => {
                 setItems(res.data)
             })
+            .catch(er => console.error(er))
     }, [])
 
     return (

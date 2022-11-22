@@ -12,6 +12,19 @@
     text-align: left;
   }
 }
+.textblock {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  .link > a {
+    color: var(--green);
+    text-decoration: underline;
+    transition: .2s;
+    &:hover {
+      filter: brightness(.7);
+    }
+  }
+}
 
 .button {
   padding: 12px 16px 12px 24px;

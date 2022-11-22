@@ -23,7 +23,7 @@ export default function EditPanel() {
                 if (title.length && text.length) {
                     axios
                         .post(
-                            process.env.NEXT_PUBLIC_APP_HOSTNAME + "/api/post-conference",
+                            process.env.NEXT_PUBLIC_APP_HOSTNAME + "/api/conferences/post-conference",
                             { title, text }
                         )
                         .then(() => dispatch(clearAll()))
@@ -65,7 +65,7 @@ export default function EditPanel() {
     return (
         <div className={cl.fixed_wrapper}>
             <div className={cl.edit_panel}>
-                {items?.length ? items.map(el => el.isLine ? <Line /> : <Button onClick={el.handler}>{el.Component()}</Button>) : <></> }
+                {items?.length ? items.map((el, i) => el.isLine ? <Line key={i} /> : <Button key={i} onClick={el.handler}>{el.Component()}</Button>) : <></> }
             </div>
         </div>
     )

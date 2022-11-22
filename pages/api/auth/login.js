@@ -1,6 +1,6 @@
 import {withIronSessionApiRoute} from "iron-session/next";
-import {sessionOptions} from "../../lib/auth/session";
-import {pool} from "../../lib/pg/db";
+import {sessionOptions} from "../../../lib/auth/session";
+import {pool} from "../../../lib/pg/db";
 
 async function LoginRoute(req, res) {
     const {login, password} = await req.body;

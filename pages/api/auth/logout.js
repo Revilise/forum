@@ -1,4 +1,4 @@
-import {sessionOptions} from "../../lib/auth/session";
+import {sessionOptions} from "../../../lib/auth/session";
 import {withIronSessionApiRoute} from "iron-session/next";
 
 function LogoutRoute(req, res) {

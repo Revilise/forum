@@ -1,7 +1,7 @@
 import Layout from "../components/layout/Layout";
 import Form from "../components/central-form/Form";
 import Input from "../components/input/Input";
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import useUser from "../lib/auth/useUser";
 import axios from "axios";
 import {LogIn} from "../components/icon/icons";
@@ -18,8 +18,8 @@ export default function LoginPage() {
             await (async function() {
                 const res = await axios
                     .post(
-                        'http://localhost:3000/api/login',
-                        { password, login }
+                        'http://localhost:3000/api/auth/login',
+                        { password: inputs.password, login: inputs.login }
                     )
                     .then(res => res.data)
 
@@ -28,18 +28,29 @@ export default function LoginPage() {
         )
     }
 
-    const [login, changeLogin] = useState("userlog");
-    const [password, changePassword] = useState("123");
+    const [inputs, changeInput] = useState({
+        login: "",
+        password: ""
+    })
+
+    function onChange(e) {
+        inputs[e.target.name] = e.target.value;
+        changeInput(Object.assign({}, inputs));
+    }
 
     return (
         <Layout title={"login"}>
             <Form title={"LOG IN"}>
-                <Input value={login} onChange={changeLogin} placeholder={"LOGIN"} />
-                <Input value={password} onChange={changePassword} placeholder={"PASSWORD"} />
+                <Input required={true} name={"login"} value={inputs.login} onChange={onChange} placeholder={"LOGIN"} />
+                <Input required={true} name={"password"} value={inputs.password} onChange={onChange} placeholder={"PASSWORD"} />
                 <Form.Button onClick={onsubmit}>
                     login
                     <LogIn />
                 </Form.Button>
+                <Form.Textblock>
+                    have no account yet?
+                    <Form.Link href={"/log-up"}>Log up</Form.Link>
+                </Form.Textblock>
             </Form>
         </Layout>
     )

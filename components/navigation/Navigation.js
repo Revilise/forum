@@ -1,20 +1,18 @@
 import cl from './navigation.module.scss'
 import Icons from "../icon/icons";
-import useUser from "../../lib/auth/useUser";
 import axios from "axios";
-
+import React from 'react';
+import useUser from "../../lib/auth/useUser";
 
 const Navigation = ({children}) => {
+    const { mutateUser } = useUser({ redirectTo: "/login" });
 
-    const { mutateUser } = useUser({
-        redirectTo: "/login"
-    });
-
+    console.log("nav rendered")
     async function logout(e) {
         mutateUser(
             await (async function() {
                 return await axios
-                        .get('http://localhost:3000/api/logout')
+                        .get('http://localhost:3000/api/auth/logout')
                         .then(() => ({ isLogged: false }))
             })()
         )
@@ -30,4 +28,8 @@ const Navigation = ({children}) => {
     )
 }
 
-export default Navigation;
+function propsAreEqual(prev, next) {
+    return prev.children[0].key === next.children[0].key
+}
+
+export default React.memo(Navigation, propsAreEqual)

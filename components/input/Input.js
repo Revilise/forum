@@ -4,7 +4,8 @@ export default function Input({
     placeholder,
     value,
     onChange,
-    required
+    required,
+    name
 }) {
-    return <input className={cl.input} placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} required={required}/>
+    return <input name={name} className={cl.input} placeholder={placeholder} value={value} onChange={onChange} required={required}/>
 }
