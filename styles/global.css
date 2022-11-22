@@ -1,16 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap');
 
+@font-face {
+    font-family: 'Gilroy-Regular';
+    src: url("../public/fonts/Gilroy-Regular.woff") format('woff');
+}
+@font-face {
+    font-family: 'Gilroy-Bold';
+    src: url("../public/fonts/Gilroy-Bold.woff") format('woff');
+}
+
 * {
     margin: 0;
     padding: 0;
     /* bad or ok ??? */
     color: var(--dt-primary-font);
+    font-size: 18px;
+    line-height: 22px;
 }
 body {
     line-height: 27px;
     font-family: 'Nunito';
     background: var(--dt-primary-background);
 }
+
 a {
     text-decoration: none;
+}
+
+h1 {
+    font-family: 'Gilroy-Regular';
+    font-size: 64px;
+}
+h1 span, h2 span, h3 span {
+    font-family: 'Gilroy-Bold';
+    font-size: inherit;
+}
+h2 { font-size: 36px; }
+h3 { font-size: 27px; }
+h2, h3 {
+    font-family: 'Gilroy-Bold';
 }

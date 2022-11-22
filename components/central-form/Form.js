@@ -2,7 +2,7 @@ import cl from './central-form.module.scss'
 import Logo from "../logo/Logo";
 import Line from '../line/Line';
 
-export default function Form({children, title}) {
+function Form({children, title}) {
     return (
         <div className={cl.form}>
             <header className={cl.form_header}>
@@ -14,3 +14,11 @@ export default function Form({children, title}) {
         </div>
     )
 }
+
+Form.Button = ({children, onClick}) => (
+    <button onClick={onClick} className={cl.button}>
+        {children}
+    </button>
+)
+
+export default Form;

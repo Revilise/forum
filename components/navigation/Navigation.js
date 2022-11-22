@@ -13,9 +13,9 @@ const Navigation = ({children}) => {
     async function logout(e) {
         mutateUser(
             await (async function() {
-                await axios.get('http://localhost:3000/api/logout')
-
-                return { isLogged: false }
+                return await axios
+                        .get('http://localhost:3000/api/logout')
+                        .then(() => ({ isLogged: false }))
             })()
         )
     }
