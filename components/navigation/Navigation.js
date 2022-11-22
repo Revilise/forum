@@ -7,8 +7,7 @@ import useUser from "../../lib/auth/useUser";
 const Navigation = ({children}) => {
     const { mutateUser } = useUser({ redirectTo: "/login" });
 
-    console.log("nav rendered")
-    async function logout(e) {
+    async function logout() {
         mutateUser(
             await (async function() {
                 return await axios
