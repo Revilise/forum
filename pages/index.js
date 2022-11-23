@@ -10,14 +10,13 @@ import React from 'react'
 
 export const getServerSideProps = redirectUnauthorized;
 
+const links = [
+    { href: "/", text: "all" },
+    { href: "/my-conferences", text: "my conferences"},
+    { href: "/part-in", text: "part in conferences"}
+]
+
 export default function IndexPage() {
-
-    const links = [
-        { href: "/", text: "all" },
-        { href: "/my-conferences", text: "my conferences"},
-        { href: "/part-in", text: "part in conferences"}
-    ]
-
     const [items, setItems] = useState([]);
 
     useEffect(() => {

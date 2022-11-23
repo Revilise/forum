@@ -74,13 +74,11 @@ RETURNS TRIGGER
 $$
 BEGIN
     INSERT INTO conference_sum_vote (conference_id, vote)
-    VALUES (NEW.conference_id, 0);
+    SELECT NEW.conference_id, 0;
 
     RETURN NEW;
 END;
 $$;
-
--- DROP TRIGGER trigger_on_conference_insert ON conferences;
 
 CREATE TRIGGER trigger_on_conference_insert
     AFTER INSERT
@@ -98,9 +96,10 @@ $$
 BEGIN
     UPDATE conference_sum_vote
         SET vote = (
-            SELECT SUM(vote) FROM user_votes
-            WHERE user_votes.conference_id = conference_sum_vote.conference_id
-        )
+                SELECT (CASE WHEN SUM(vote) IS NULL THEN 0 ELSE SUM(vote) END)
+                FROM user_votes
+                WHERE user_votes.conference_id = conference_sum_vote.conference_id
+            )
     WHERE NEW.conference_id = conference_id;
 
     RETURN NEW;
@@ -140,10 +139,14 @@ SELECT
     conferences.conference_id,
     conference_name as title,
     conference_text as text,
-    datetime,
-    u.vote as vote
-FROM conferences LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = 1;
+    TO_CHAR(datetime :: DATE, 'dd-mm-yyyy'),
+    u.vote as vote,
+    c.vote as total
+FROM conferences
+    LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = 1
+    LEFT JOIN conference_sum_vote c on conferences.conference_id = c.conference_id
 
 
 SELECT CASE WHEN EXISTS(SELECT user_vote_id FROM user_votes WHERE user_votes.user_id = 2 AND conference_id = 6) THEN 1 ELSE 2 END AS value;
 
+SELECT TO_CHAR(NOW() :: DATE, 'dd-mm-yyyy');
