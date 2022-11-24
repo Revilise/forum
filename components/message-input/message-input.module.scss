@@ -1,0 +1,32 @@
+@import "styles/mixins/container";
+@import "styles/mixins/flex";
+
+.container {
+  @include container;
+  @include horizontal-flex;
+  align-items: center;
+  .input {
+    background: transparent;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    line-height: 1em;
+    padding: 16px 24px;
+    width: 100%;
+    font-family: Gilroy-Regular;
+  }
+  .button {
+    cursor: pointer;
+    padding: 8px;
+    @include horizontal-flex;
+    height: fit-content;
+    border: none;
+    background: transparent;
+    border-radius: 4px;
+    margin: 8px;
+    transition: .2s;
+    &:hover {
+      background: var(--dt-secondary-background);
+    }
+  }
+}

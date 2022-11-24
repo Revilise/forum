@@ -162,7 +162,16 @@ class Icons {
             </svg>
         )
     )
+
+    static Send = new Icon(
+        () => (
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.4541 2L11.4541 13" stroke="white" strokeOpacity="0.4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M22.4541 2L15.4541 22L11.4541 13L2.4541 9L22.4541 2Z" stroke="white" strokeOpacity="0.4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        )
+    )
 }
 
 export default Icons;
-export const { Home, ChevronDown, ChevronUp, LogIn, LogOut, PlusCircle, Search, User, Settings, Save, Image, Link, Trash } = Icons;
+export const { Home, ChevronDown, ChevronUp, LogIn, LogOut, PlusCircle, Search, User, Settings, Save, Image, Link, Trash, Send } = Icons;

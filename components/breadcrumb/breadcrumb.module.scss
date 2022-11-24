@@ -1,5 +1,7 @@
+@import "styles/mixins/flex";
+
 .container {
-  display: flex;
+  @include horizontal-flex;
   gap: 24px;
   justify-content: end;
   .link {

@@ -1,10 +1,10 @@
-import {pool} from "../../lib/pg/db";
+import {pool} from "../../../lib/pg/db";
 import {withIronSessionApiRoute} from "iron-session/next";
-import {sessionOptions} from "../../lib/auth/session";
+import {sessionOptions} from "../../../lib/auth/session";
 
 async function PostConferenceRoute(req, res) {
     const {title, text} = req.body;
-    pool
+    await pool
         .query({
         text: `
             INSERT INTO conferences 

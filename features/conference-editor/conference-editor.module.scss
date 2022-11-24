@@ -1,18 +1,19 @@
 @import "styles/mixins/textarea";
 @import "styles/mixins/container";
+@import "styles/mixins/flex";
 
 .container {
-  display: flex;
+  @include horizontal-flex;
   gap: 36px;
 }
 
 .editor {
-  display: flex;
-  flex-direction: column;
+  @include vertical-flex;
   > &__input {
     @include textarea;
     width: 100%;
     font-size: 36px;
+    line-height: 54px;
     font-weight: bold;
   }
 }
@@ -22,8 +23,7 @@
 }
 .edit_panel {
   @include container;
-  display: flex;
-  flex-direction: column;
+  @include vertical-flex;
   background: var(--dt-containers-background);
   gap: 8px;
   position: fixed;
@@ -41,7 +41,7 @@
     cursor: pointer;
     transition: .2s;
     font-family: "Times New Roman", serif;
-    display: flex;
+    @include horizontal-flex;
     align-items: center;
     justify-content: center;
     &:hover {

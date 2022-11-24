@@ -1,0 +1,18 @@
+@import "styles/mixins/flex";
+
+.item {
+  @include vertical-flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  &:hover {
+    background: var(--dt-containers-background);
+  }
+  .header {
+    @include flex;
+  }
+  .footer {
+    @include flex;
+    gap: 8px;
+  }
+}

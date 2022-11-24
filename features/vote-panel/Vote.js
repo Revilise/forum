@@ -1,31 +1,34 @@
 import cl from './vote-panel.module.scss';
 import Icons from "../../components/icon/icons";
-import {useEffect} from "react";
 
-function VoteHOC(WrappedComponent, setVote, vote) {
+import axios from "axios";
+
+function VoteHOC(WrappedComponent, setVote, vote, conference_id) {
+
+    const url = process.env.NEXT_PUBLIC_APP_HOSTNAME+"/api/update-vote";
+    function updateVote(value) {
+        axios
+            .post(url, {
+                conference_id,
+                vote: value
+            })
+            .then(() => setVote(value))
+    }
 
     return function() {
         const onVote = (value) => {
-            // TODO: ON VOTE
-            // react query to api for updating value
-            // then
-            // redux changes store
-            setVote(value);
+            updateVote(value)
         }
 
         const onUnvote = () => {
-            // TODO: ON UNVOTE
-            // react query to api for updating value into 0
-            // then
-            // redux changes store
-            setVote(0);
+            updateVote(0)
         }
 
         return <WrappedComponent value={vote} onVote={onVote} onUnvote={onUnvote} />
     }
 }
 
-export const VoteUp = ({setVote, vote}) => VoteHOC(
+export const VoteUp = ({setVote, vote, conference_id}) => VoteHOC(
     function({value, onVote, onUnvote}) {
         const clause = value === 1;
 
@@ -38,10 +41,10 @@ export const VoteUp = ({setVote, vote}) => VoteHOC(
             </button>
         )
     },
-    setVote, vote
+    setVote, vote, conference_id
 )()
 
-export const VoteDown = ({setVote, vote}) => VoteHOC(
+export const VoteDown = ({setVote, vote, conference_id}) => VoteHOC(
     function({value, onVote, onUnvote}) {
         const clause = value === -1;
 
@@ -54,5 +57,5 @@ export const VoteDown = ({setVote, vote}) => VoteHOC(
             </button>
         )
     },
-    setVote, vote
+    setVote, vote, conference_id
 )()

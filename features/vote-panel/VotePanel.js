@@ -8,8 +8,8 @@ export default function VotePanel(props) {
 
     return (
         <div className={cl.container}>
-            <VoteUp vote={vote} setVote={setVote}/>
-            <VoteDown vote={vote} setVote={setVote} />
+            <VoteUp conference_id={props.conference_id} vote={vote} setVote={setVote}/>
+            <VoteDown conference_id={props.conference_id} vote={vote} setVote={setVote} />
         </div>
     )
 }
