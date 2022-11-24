@@ -7,18 +7,16 @@ import Comments from "../../components/comments/Comments";
 import MessageInput from "../../components/message-input/MessageInput";
 import useSWR from "swr";
 import {useState} from "react";
-import useUser from "../../lib/auth/useUser";
 
 export const getServerSideProps = redirectUnauthorized;
 
 export default function ConferencePage() {
     const router = useRouter();
-    const { user } = useUser();
     const [input, changeInput] = useState("");
     const { id } = router.query;
 
     function sendComment() {
-        //todo: post comment {conference_id: id, user_id: user.id}
+        //todo: post comment {conference_id: id}
     }
 
     return (
