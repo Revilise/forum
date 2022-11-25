@@ -1,10 +1,21 @@
 import cl from './conference-view.module.scss';
 import useSWR from "swr";
-import {fetcher} from "./fetcher";
 import Line from "../line/Line";
+import useUser from "../../lib/auth/useUser";
+import axios from "axios";
+import Router from "next/router";
+import { Trash } from '../icon/icons';
 
 export default function ConferenceView({conference_id}) {
-    const { data } = useSWR(process.env.NEXT_PUBLIC_APP_HOSTNAME + `/api/conferences/${conference_id}`, fetcher)
+    const { data } = useSWR(`/api/conferences/${conference_id}`)
+    const { user } = useUser({redirectTo: '/login'});
+
+    function deleteConference() {
+        axios.delete(
+            '/api/conferences/delete',
+            {data: {conference_id}}
+        ).then(() => Router.push('/'))
+    }
 
     if (!data) {
         return <></>
@@ -12,7 +23,10 @@ export default function ConferenceView({conference_id}) {
 
     return (
         <div className={cl.container}>
-            <p>{ data.author }</p>
+            <header className={cl.header}>
+                { data.author }
+                { user?.id === data?.author_id && user?.id ? <button className={cl.button} onClick={deleteConference}><Trash /></button> : <></>}
+            </header>
             <Line />
             <h2>{ data.title }</h2>
             <span>{ data.datetime }</span>

@@ -7,6 +7,8 @@ import Comments from "../../components/comments/Comments";
 import MessageInput from "../../components/message-input/MessageInput";
 import useSWR from "swr";
 import {useState} from "react";
+import {fetcher} from "../../components/conference-view/fetcher";
+import axios from "axios";
 
 export const getServerSideProps = redirectUnauthorized;
 
@@ -14,9 +16,19 @@ export default function ConferencePage() {
     const router = useRouter();
     const [input, changeInput] = useState("");
     const { id } = router.query;
+    const { data, mutate } = useSWR(`/api/comments/get-list/${id}`)
 
-    function sendComment() {
-        //todo: post comment {conference_id: id}
+    async function sendComment() {
+        mutate(
+            await (async function() {
+                const res = await axios.post(
+                    process.env.NEXT_PUBLIC_APP_HOSTNAME +
+                    '/api/comments/post',
+                    { conference_id: id, text: input })
+                    .then(res => res.data)
+                    .then(() => changeInput(''))
+            })()
+        )
     }
 
     return (
@@ -31,7 +43,7 @@ export default function ConferencePage() {
                 >
                     <MessageInput.Submit onSubmit={sendComment} />
                 </MessageInput>
-                <Comments items={items} />
+                <Comments items={data ?? []} />
             </Layout.Content>
         </Layout>
     )

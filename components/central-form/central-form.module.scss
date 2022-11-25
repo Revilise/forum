@@ -35,9 +35,8 @@
   background: var(--dt-green-gradient);
   outline: none;
   border: none;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
+  @include horizontal-flex;
   cursor: pointer;
   transition: .2s;
   font-family: Nunito;

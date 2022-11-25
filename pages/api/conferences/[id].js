@@ -10,7 +10,7 @@ async function GetConferenceRoute(req, res) {
            text: `SELECT
                     conference_name as title,
                     conference_text as text,
-                    
+                    author_id,
                     u.user_name as author
                FROM conferences c
                JOIN users u ON c.author_id = u.user_id

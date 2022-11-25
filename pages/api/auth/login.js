@@ -10,13 +10,12 @@ async function LoginRoute(req, res) {
             text: "SELECT user_id as id, user_name as name FROM users WHERE user_login = $1 AND user_password = MD5($2)",
             values: [login, password]
         })
-        .then((user) => {
+        .then(async (user) => {
             if (!user.rows.length) return res.json({ok: false})
-
-            req.session.user = {...user.rows[0], isLogged: true};
-            req.session.save().then(() => {
-                res.json(req.session.user)
-            });
+            const user_data = user.rows[0];
+            req.session.user = {...user_data, isLogged: true};
+            await req.session.save()
+            res.json(req.session.user);
         })
         .catch(err => console.log(err))
 }

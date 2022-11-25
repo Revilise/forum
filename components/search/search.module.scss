@@ -1,9 +1,9 @@
 @import "styles/mixins/container";
+@import "styles/mixins/flex";
 
 .search {
   @include container;
-  display: flex;
-  align-items: center;
+  @include horizontal-flex;
   overflow: hidden;
   flex-grow: 1;
   .input {

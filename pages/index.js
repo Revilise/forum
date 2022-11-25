@@ -20,7 +20,7 @@ export default function IndexPage() {
 
     useEffect(() => {
         axios
-            .get( process.env.NEXT_PUBLIC_APP_HOSTNAME + '/api/conferences/get-conferences-list')
+            .get( process.env.NEXT_PUBLIC_APP_HOSTNAME + '/api/conferences/get-list')
             .then(res => {
                 setItems(res.data)
             })

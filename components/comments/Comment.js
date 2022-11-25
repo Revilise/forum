@@ -1,6 +1,6 @@
 import cl from './comments.module.scss';
 
-export default function Comment({author, avatar, datetime, text}) {
+export default function Comment({author, avatar, datetime, text, comment_id}) {
 
     return (
         <div className={cl.item}>
