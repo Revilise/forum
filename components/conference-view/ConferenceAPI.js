@@ -1,13 +1,13 @@
 import useSWR from "swr";
-import useUser from "../../lib/auth/useUser";
+import useUser from "../../lib/hooks/useUser";
 import axios from "axios";
 import Router from "next/router";
-import ConferenceView from "../../components/conference-view/conferenceView";
-import cl from "../../components/conference-view/conference-view.module.scss";
-import {Trash} from "../../components/icon/icons";
+import ConferenceView from "./conferenceView";
+import cl from "./conference-view.module.scss";
+import {Trash} from "../icon/icons";
 import {useCallback} from "react";
 
-export default function ConferenceApi({conference_id}) {
+export default function ConferenceAPI({conference_id}) {
     const { data } = useSWR(`/api/conferences/${conference_id}`)
     const { user } = useUser({redirectTo: '/login'});
 

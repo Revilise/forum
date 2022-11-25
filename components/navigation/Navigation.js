@@ -2,7 +2,7 @@ import cl from './navigation.module.scss'
 import Icons from "../icon/icons";
 import axios from "axios";
 import React from 'react';
-import useUser from "../../lib/auth/useUser";
+import useUser from "../../lib/hooks/useUser";
 
 const Navigation = ({children}) => {
     const { mutateUser } = useUser({ redirectTo: "/login" });

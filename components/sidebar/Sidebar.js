@@ -4,7 +4,7 @@ import {Home, LogOut, PlusCircle, Settings, User} from "../icon/icons";
 import NavItem from "../navigation/NavItem";
 import Line from "../line/Line";
 import Navigation from "../navigation/Navigation";
-import useUser from "../../lib/auth/useUser";
+import useUser from "../../lib/hooks/useUser";
 import {useEffect} from "react";
 
 const Sidebar = ({children}) => (

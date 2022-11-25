@@ -1,5 +1,5 @@
-@import "styles/mixins/container";
-@import "styles/mixins/flex";
+@import "../../styles/mixins/container";
+@import "../../styles/mixins/flex";
 
 .container {
   @include vertical-flex;

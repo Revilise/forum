@@ -1,10 +1,25 @@
-import {useRouter} from "next/router";
+import useComments from "../../lib/hooks/useComments";
+import Comments from "./Comments";
 import {useState} from "react";
-import useComments from "../../lib/comments/useComments";
 import axios from "axios";
-import MessageInput from "../../components/message-input/MessageInput";
+import MessageInput from "../message-input/MessageInput";
 
-export default function CommentsPostApi({conference_id}) {
+export default function CommentsAPI({conference_id}) {
+    return (
+        <>
+            <CommentsPostAPI conference_id={conference_id} />
+            <CommentsGetAPI conference_id={conference_id} />
+        </>
+    )
+}
+
+export function CommentsGetAPI({conference_id}) {
+    const { comments } = useComments({conference_id})
+
+    return <Comments items={comments ?? []} />
+}
+
+export function CommentsPostAPI({conference_id}) {
     const [input, changeInput] = useState("");
     const { mutateComments } = useComments({conference_id})
 

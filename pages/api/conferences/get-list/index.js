@@ -1,8 +1,8 @@
-import {pool} from "../../../lib/pg/db";
 import {withIronSessionApiRoute} from "iron-session/next";
-import {sessionOptions} from "../../../lib/auth/session";
+import {pool} from "../../../../lib/pg/db";
+import {sessionOptions} from "../../../../lib/auth/session";
 
-async function GetConferenceListRoute(req, res) {
+async function GetConferencesListRoute(req, res) {
     await pool
         .query({
             text: `
@@ -25,4 +25,4 @@ async function GetConferenceListRoute(req, res) {
         .catch(err => console.log(err));
 }
 
-export default withIronSessionApiRoute(GetConferenceListRoute, sessionOptions);
+export default withIronSessionApiRoute(GetConferencesListRoute, sessionOptions);

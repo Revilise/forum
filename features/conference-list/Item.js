@@ -1,5 +1,5 @@
 import cl from './conference-list.module.scss';
-import VotePanel from '../../features/vote-panel/VotePanel';
+import VotePanel from '../vote-panel/VotePanel';
 import Router from "next/router";
 
 export default function Item({

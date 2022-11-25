@@ -12,7 +12,6 @@ async function PostComment(req, res) {
                 `
                 INSERT INTO comments (conference_id, comment_text, datetime, author_id, parent_id)
                 SELECT $1, $2, NOW(), $3, $4;
-               
                 `,
             values: [conference_id, text, id, parent_id]
         })
