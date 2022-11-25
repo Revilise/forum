@@ -10,6 +10,7 @@
 
 .editor {
   @include vertical-flex;
+  width: 100%;
   > &__input {
     @include textarea;
     width: 100%;
