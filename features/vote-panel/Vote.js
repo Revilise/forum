@@ -1,6 +1,5 @@
 import cl from './vote-panel.module.scss';
 import Icons from "../../components/icon/icons";
-
 import axios from "axios";
 
 function VoteHOC(WrappedComponent, setVote, vote, conference_id) {

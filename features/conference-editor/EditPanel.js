@@ -24,6 +24,7 @@ export default function EditPanel() {
                     axios
                         .post(
                             process.env.NEXT_PUBLIC_APP_HOSTNAME + "/api/conferences/post",
+
                             { title, text }
                         )
                         .then(() => dispatch(clearAll()))
