@@ -27,6 +27,9 @@ a {
     text-decoration: none;
 }
 
+h1, h2, h3 {
+    line-height: 1.2em;
+}
 h1 {
     font-family: 'Gilroy-Regular';
     font-size: 64px;
@@ -39,4 +42,8 @@ h2 { font-size: 36px; }
 h3 { font-size: 27px; }
 h2, h3 {
     font-family: 'Gilroy-Bold';
+}
+
+span {
+    font-size: 12px;
 }

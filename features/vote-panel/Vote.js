@@ -13,6 +13,7 @@ function VoteHOC(WrappedComponent, setVote, vote, conference_id) {
             })
             .then(() => setVote(value))
     }
+
     return function() {
         const onVote = (value) => {
             updateVote(value)

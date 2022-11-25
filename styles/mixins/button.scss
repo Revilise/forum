@@ -1,0 +1,15 @@
+@import "styles/mixins/flex";
+
+@mixin btn() {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .2s;
+  @include horizontal-flex;
+  justify-content: center;
+  background: inherit;
+
+  &:hover {
+    background: var(--dt-secondary-background);
+  }
+}

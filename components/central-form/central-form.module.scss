@@ -1,3 +1,5 @@
+@import "styles/mixins/flex";
+
 .form {
   width: 383px;
   margin: 0 auto;
@@ -5,8 +7,7 @@
   grid-column-end: 6;
   align-self: center;
   gap: 16px;
-  display: flex;
-  flex-direction: column;
+  @include vertical-flex;
   text-align: center;
   &_header {
     text-align: left;
@@ -34,9 +35,8 @@
   background: var(--dt-green-gradient);
   outline: none;
   border: none;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
+  @include horizontal-flex;
   cursor: pointer;
   transition: .2s;
   font-family: Nunito;
