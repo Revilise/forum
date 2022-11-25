@@ -5,6 +5,7 @@ import ConferenceView from "../../components/conference-view/conferenceView";
 import {CommentsGetApi} from "../../features/comments/comments-get-api";
 import CommentsPostApi from "../../features/comments/comments-post-api";
 import {useRouter} from "next/router";
+import ConferenceApi from "../../features/conference/conference-api";
 
 export const getServerSideProps = redirectUnauthorized;
 
@@ -14,7 +15,7 @@ export default function ConferencePage() {
     return (
         <Layout sidebar={roleTypes.user}>
             <Layout.Content>
-                <ConferenceView conference_id={id} />
+                <ConferenceApi conference_id={id} />
                 <h3>COMMENTS</h3>
                 <CommentsPostApi conference_id={id} />
                 <CommentsGetApi conference_id={id} />

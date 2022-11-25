@@ -4,10 +4,8 @@
 
 .container {
   @include container;
+  @include vertical-flex;
   padding: 24px;
-  display: flex;
-
-  flex-direction: column;
   gap: 8px;
   .button {
 
