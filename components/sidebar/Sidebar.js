@@ -6,6 +6,7 @@ import Line from "../line/Line";
 import Navigation from "../navigation/Navigation";
 import useUser from "../../lib/hooks/useUser";
 import {useEffect} from "react";
+import Avatar from "../avatar/Avatar";
 
 const Sidebar = ({children}) => (
     <div className={cl.sidebar}>
@@ -27,7 +28,7 @@ export default function SidebarFactory({type}) {
     }
 }
 
-export const UserSidebar = ({user}) => (
+export const UserSidebar = () => (
     <Sidebar>
         <Navigation>
             <NavItem href={"/"} Component={Home} ActiveComponent={Home.Active}/>

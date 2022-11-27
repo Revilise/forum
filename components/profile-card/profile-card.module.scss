@@ -1,0 +1,38 @@
+@import "styles/mixins/container";
+@import "styles/mixins/flex";
+@import "styles/mixins/button";
+
+.container {
+  width: 100%;
+  background: var(--dt-secondary-background);
+  border-radius: 16px;
+  padding: 24px;
+  transition: .2s;
+  @include flex;
+  box-sizing: border-box;
+  gap: 24px;
+  .header {
+    @include flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
+  }
+  .fixed {
+    position: relative;
+    .button {
+      @include btn;
+      padding: 8px;
+      &:hover {
+        background: var(--dt-containers-background);
+      }
+    }
+  }
+  .avatar, .avatar rect {
+    width: 192px;
+    height: 192px;
+    border-radius: 8px;
+    image {
+      width: 192px;
+    }
+  }
+}

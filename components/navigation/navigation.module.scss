@@ -18,4 +18,5 @@
 .container {
   @include vertical-flex;
   gap: 16px;
+  padding: 28px 0;
 }
