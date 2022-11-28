@@ -9,7 +9,6 @@ export default function ProfileCard({
     },
     editable = false
 }) {
-    console.log(user)
     return (
         <div className={cl.container}>
             <header className={cl.header}>

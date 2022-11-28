@@ -1,4 +1,3 @@
-import cl from './avatar.module.scss'
 
 export default function Avatar({
     width = 48,
