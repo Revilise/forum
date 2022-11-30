@@ -8,10 +8,7 @@
   &:hover {
     background: var(--dt-containers-background);
   }
-  .header {
-    @include flex;
-  }
-  .footer {
+  .header, .footer {
     @include flex;
     gap: 8px;
   }

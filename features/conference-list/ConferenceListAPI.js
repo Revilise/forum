@@ -4,7 +4,9 @@ import {useEffect} from "react";
 import {selectConfig, setConferences} from "./ConferenceListSlice";
 import axios from "axios";
 
-export default function ConferenceListAPI() {
+export default function ConferenceListAPI({
+    route = "get-list"
+}) {
     const { conferences, filters } = useSelector(selectConfig);
     const dispatch = useDispatch();
 
@@ -14,7 +16,7 @@ export default function ConferenceListAPI() {
             query += `${key}=${filters[key]}`
         }
 
-        axios.get(process.env.NEXT_PUBLIC_APP_HOSTNAME+'/api/conferences/get-list/'+query).then(res => {
+        axios.get(process.env.NEXT_PUBLIC_APP_HOSTNAME+`/api/conferences/${route}/${query}`).then(res => {
             dispatch(setConferences(res.data))
         })
     }, [filters])
