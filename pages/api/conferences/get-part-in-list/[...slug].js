@@ -24,7 +24,10 @@ async function GetConferencesListRoute(req, res) {
          WHERE conference_text LIKE '%${params.keyword}%' AND com.user_id = $1
          ORDER BY total DESC`,
         values: [id]
-    }).then(data => res.json(data.rows))
+    }).then(data => {
+        const d = data.rows.length ? data.rows : []
+        res.json(d)
+    })
 }
 
 export default withIronSessionApiRoute(GetConferencesListRoute, sessionOptions);

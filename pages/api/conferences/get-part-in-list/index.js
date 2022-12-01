@@ -14,11 +14,11 @@ async function GetConferencesListRoute(req, res) {
                     TO_CHAR(conferences.datetime :: DATE, 'dd-mm-yyyy') as datetime,
                     u.vote as vote,
                     c.vote as total
-                FROM conferences LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = 1
+                FROM conferences LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = $1
                 LEFT JOIN conference_sum_vote c on conferences.conference_id = c.conference_id
                 INNER JOIN comments com on conferences.conference_id = com.conference_id
                 GROUP BY com.conference_id, com.author_id, com.conference_id, conference_name, conference_text, TO_CHAR(conferences.datetime :: DATE, 'dd-mm-yyyy'), u.vote, c.vote
-                HAVING com.author_id = 1
+                HAVING com.author_id = $1
                 ORDER BY total DESC;
             `,
             values: [req.session.user.id]
