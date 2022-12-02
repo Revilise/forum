@@ -3,14 +3,14 @@ import Head from "next/head";
 import SidebarFactory from "../sidebar/Sidebar";
 import {roleTypes} from "../../lib/roles/roleTypes";
 
-export default function Layout({children, title, sidebar}) {
+export default function Layout({children, title, user, isSidebar}) {
     return (
         <div className={cl.layout}>
             <Head>
                 <title>{title}</title>
             </Head>
             {
-                sidebar ? <SidebarFactory type={roleTypes.user} /> : <></>
+                isSidebar ? <SidebarFactory user={user} /> : <></>
             }
             { children }
         </div>

@@ -6,11 +6,10 @@ import redirectUnauthorized from "../../lib/auth/redirectUnauthorized";
 
 export const getServerSideProps = redirectUnauthorized;
 
-export default function Profile() {
-    const { user } = useUser({redirectTo: "/login"});
+export default function Profile({user}) {
 
     return (
-        <Layout sidebar={roleTypes.user}>
+        <Layout isSidebar={true} user={user}>
            <Layout.Content>
                <ProfileCard user={user} editable={true} />
            </Layout.Content>

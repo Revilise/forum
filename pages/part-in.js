@@ -3,10 +3,13 @@ import {roleTypes} from "../lib/roles/roleTypes";
 import SearchAPI from "../components/search/SearchAPI";
 import BreadcrumbAPI from "../components/breadcrumb/BreadcrumbAPI";
 import ConferenceListAPI from "../features/conference-list/ConferenceListAPI";
+import redirectUnauthorized from "../lib/auth/redirectUnauthorized";
 
-export default function PartInPage() {
+export const getServerSideProps = redirectUnauthorized;
+
+export default function PartInPage({user}) {
     return (
-        <Layout sidebar={roleTypes.user}>
+        <Layout  user={user} isSidebar={true}>
             <Layout.Content>
                 <Layout.HorizontalPanel>
                     <SearchAPI />

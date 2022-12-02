@@ -7,9 +7,9 @@ import BreadcrumbAPI from "../components/breadcrumb/BreadcrumbAPI";
 
 export const getServerSideProps = redirectUnauthorized;
 
-export default function IndexPage() {
+export default function IndexPage({user}) {
     return (
-        <Layout title={"forum"} sidebar={roleTypes.user}>
+        <Layout title={"forum"} user={user} isSidebar={true}>
             <Layout.Content>
                 <Layout.HorizontalPanel>
                     <SearchAPI />

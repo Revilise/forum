@@ -14,10 +14,10 @@ const Sidebar = ({children}) => (
     </div>
 )
 
-export default function SidebarFactory({type}) {
-    const { user } = useUser({ redirectTo: "/login" });
+export default function SidebarFactory({user}) {
+    const { role } = user;
 
-    switch (type) {
+    switch (role) {
         case roleTypes.admin:
             return <AdminSidebar />
         case roleTypes.moder:
