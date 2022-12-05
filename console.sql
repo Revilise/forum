@@ -74,11 +74,13 @@ RETURNS TRIGGER
 $$
 BEGIN
     INSERT INTO conference_sum_vote (conference_id, vote)
-    SELECT NEW.conference_id, 0;
+    VALUES (NEW.conference_id, 0);
 
     RETURN NEW;
 END;
 $$;
+
+-- DROP TRIGGER trigger_on_conference_insert ON conferences;
 
 CREATE TRIGGER trigger_on_conference_insert
     AFTER INSERT
@@ -86,6 +88,8 @@ CREATE TRIGGER trigger_on_conference_insert
     FOR EACH ROW
     EXECUTE PROCEDURE on_conference_insert();
 
+
+SELECT MD5(' ');
 --------------------------------------------------
 
 CREATE OR REPLACE FUNCTION on_vote_insert()
@@ -96,10 +100,9 @@ $$
 BEGIN
     UPDATE conference_sum_vote
         SET vote = (
-                SELECT (CASE WHEN SUM(vote) IS NULL THEN 0 ELSE SUM(vote) END)
-                FROM user_votes
-                WHERE user_votes.conference_id = conference_sum_vote.conference_id
-            )
+            SELECT SUM(vote) FROM user_votes
+            WHERE user_votes.conference_id = conference_sum_vote.conference_id
+        )
     WHERE NEW.conference_id = conference_id;
 
     RETURN NEW;
@@ -139,14 +142,127 @@ SELECT
     conferences.conference_id,
     conference_name as title,
     conference_text as text,
-    TO_CHAR(datetime :: DATE, 'dd-mm-yyyy'),
-    u.vote as vote,
-    c.vote as total
-FROM conferences
-    LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = 1
-    LEFT JOIN conference_sum_vote c on conferences.conference_id = c.conference_id
+    datetime,
+    u.vote as vote
+FROM conferences LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = 1;
 
 
 SELECT CASE WHEN EXISTS(SELECT user_vote_id FROM user_votes WHERE user_votes.user_id = 2 AND conference_id = 6) THEN 1 ELSE 2 END AS value;
 
-SELECT TO_CHAR(NOW() :: DATE, 'dd-mm-yyyy');
+SELECT
+    conference_name as title,
+    conference_text as text,
+    datetime,
+    u.user_name as author
+FROM conferences c
+JOIN users u ON c.author_id = u.user_id
+WHERE c.conference_id = 7;
+
+
+SELECT
+       r.name as role,
+       user_id as id,
+       user_name as name,
+       f.file_path as filepath
+FROM users
+JOIN roles r on users.role_id = r.role_id
+JOIN files f on users.avatar_id = f.file_id
+WHERE user_id = $1;
+-- WHERE user_login = $1 AND user_password = MD5($2)
+
+
+
+SELECT
+    com.conference_id,
+    com.author_id,
+    conference_name as title,
+    conference_text as text,
+    TO_CHAR(conferences.datetime :: DATE, 'dd-mm-yyyy') as datetime,
+    u.vote as vote,
+    c.vote as total
+FROM conferences LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = 2
+LEFT JOIN conference_sum_vote c on conferences.conference_id = c.conference_id
+INNER JOIN comments com on conferences.conference_id = com.conference_id
+GROUP BY com.conference_id, com.author_id, com.conference_id, conference_name, conference_text, TO_CHAR(conferences.datetime :: DATE, 'dd-mm-yyyy'), u.vote, c.vote
+HAVING com.author_id = 2
+ORDER BY total DESC
+
+
+SELECT
+    conferences.conference_id as conference_id,
+    conference_name as title,
+    conference_text as text,
+    comments.author_id,
+    TO_CHAR(conferences.datetime :: DATE, 'dd-mm-yyyy') as datetime,
+    u.vote as vote,
+    c.vote as total
+FROM conferences
+LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = 1
+LEFT JOIN conference_sum_vote c on conferences.conference_id = c.conference_id
+INNER JOIN comments on conferences.conference_id = comments.conference_id
+WHERE EXISTS(
+    SELECT comments.author_id FROM comments WHERE comments.author_id = 1
+          ) = true;
+
+SELECT
+       conferences.conference_id,
+       conference_name as title,
+       conference_text as text,
+       TO_CHAR(datetime :: DATE, 'dd-mm-yyyy') as datetime,
+       u.vote as vote,
+       c.vote as total,
+       filepath
+FROM conferences LEFT JOIN user_votes u ON conferences.conference_id = u.conference_id AND u.user_id = 1
+LEFT JOIN conference_sum_vote c on conferences.conference_id = c.conference_id
+
+ORDER BY total DESC;
+
+
+SELECT
+       comment_id,
+       comment_text as text,
+       TO_CHAR(datetime :: DATE, 'dd-mm-yyyy hh:mm') as datetime,
+       u.user_name as author,
+       f.file_path as filepath
+FROM comments
+JOIN users u on comments.author_id = u.user_id
+JOIN files f on u.avatar_id = f.file_id
+WHERE conference_id = 8
+
+
+CREATE OR REPLACE FUNCTION on_conference_delete()
+RETURNS TRIGGER
+    LANGUAGE plpgsql
+    AS
+$$
+BEGIN
+    DELETE FROM conference_sum_vote WHERE conference_id = NEW.conference_id;
+    RETURN NEW;
+END
+$$;
+
+DROP FUNCTION on_conference_delete
+
+
+
+DROP TRIGGER on_conference_delete_trigger ON conferences
+
+CREATE TRIGGER on_conference_delete_trigger BEFORE DELETE
+    ON conferences
+    FOR EACH ROW
+    EXECUTE PROCEDURE on_conference_delete();
+
+
+CREATE OR REPLACE PROCEDURE ChangeUserAvatar(filename varchar(255), userId int)
+LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    IF (NOT EXISTS(SELECT * FROM files WHERE filename = file_name))
+        THEN INSERT INTO files (file_name, file_path) VALUES (filename, concat('/uploads/', filename));
+        UPDATE users SET avatar_id = (SELECT MAX(file_id) FROM files) WHERE user_id = userId;
+    END IF;
+END;
+$$;
+
+CALL ChangeUserAvatar('3', 3)
