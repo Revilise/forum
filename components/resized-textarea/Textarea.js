@@ -20,6 +20,7 @@ export default function Textarea({
         onChange(e.target.value);
         resize();
     }
+
     return (
         <textarea
             rows={1}

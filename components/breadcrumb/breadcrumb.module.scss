@@ -3,7 +3,7 @@
 .container {
   @include horizontal-flex;
   gap: 24px;
-  justify-content: end;
+  justify-content: flex-end;
   .link {
     :hover {
       color: var(--green);

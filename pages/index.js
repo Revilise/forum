@@ -1,40 +1,21 @@
 import Layout from "../components/layout/Layout";
 import {roleTypes} from "../lib/roles/roleTypes";
-import Search from "../components/search/Search";
-import Breadcrumb from "../components/breadcrumb/Breadcrumb";
-import ConferenceList from "../components/conference-list/ConferenceList";
 import redirectUnauthorized from "../lib/auth/redirectUnauthorized";
-import {useEffect, useState} from "react";
-import axios from "axios";
+import ConferenceListAPI from "../features/conference-list/ConferenceListAPI";
+import SearchAPI from "../components/search/SearchAPI";
+import BreadcrumbAPI from "../components/breadcrumb/BreadcrumbAPI";
 
 export const getServerSideProps = redirectUnauthorized;
 
-const links = [
-    { href: "/", text: "all" },
-    { href: "/my-conferences", text: "my conferences"},
-    { href: "/part-in", text: "part in conferences"}
-]
-
-export default function IndexPage() {
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get( process.env.NEXT_PUBLIC_APP_HOSTNAME + '/api/conferences/get-list')
-            .then(res => {
-                setItems(res.data)
-            })
-            .catch(er => console.error(er))
-    }, [])
-
+export default function IndexPage({user}) {
     return (
-        <Layout title={"forum"} sidebar={roleTypes.user}>
+        <Layout title={"forum"} user={user} isSidebar={true}>
             <Layout.Content>
                 <Layout.HorizontalPanel>
-                    <Search />
-                    <Breadcrumb items={links} />
+                    <SearchAPI />
+                    <BreadcrumbAPI />
                 </Layout.HorizontalPanel>
-                <ConferenceList items={items} />
+                <ConferenceListAPI />
             </Layout.Content>
         </Layout>
     )

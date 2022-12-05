@@ -6,6 +6,7 @@
     stroke: var(--default-icon);
   }
   &__active, &:hover {
+    display: flex;
     path {
       stroke: var(--#{$class});
     }

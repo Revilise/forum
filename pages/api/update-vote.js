@@ -5,6 +5,7 @@ import {pool} from "../../lib/pg/db";
 async function UpdateVoteRoute(req, res) {
     const { conference_id, vote } = req.body;
     const { id } = req.session.user;
+
     await pool
         .query({
             text: "CALL InsertOrUpdateUserVote($1, $2, $3);",

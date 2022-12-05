@@ -7,7 +7,17 @@ async function LoginRoute(req, res) {
 
    await pool
         .query({
-            text: "SELECT user_id as id, user_name as name FROM users WHERE user_login = $1 AND user_password = MD5($2)",
+            text: `
+                SELECT
+                   r.name as role,
+                   user_id as id,
+                   user_name as name,
+                   f.file_path as filepath
+                FROM users
+                JOIN roles r on users.role_id = r.role_id
+                JOIN files f on users.avatar_id = f.file_id
+                WHERE user_login = $1 AND user_password = MD5($2)
+            `,
             values: [login, password]
         })
         .then(async (user) => {

@@ -1,7 +1,8 @@
+@import "styles/mixins/flex";
+
 .container {
-  display: flex;
+  @include vertical-flex;
   gap: 16px;
-  flex-direction: column;
   width: fit-content;
   > button {
     display: flex;

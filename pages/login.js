@@ -2,7 +2,7 @@ import Layout from "../components/layout/Layout";
 import Form from "../components/central-form/Form";
 import Input from "../components/input/Input";
 import {useState} from "react";
-import useUser from "../lib/auth/useUser";
+import useUser from "../lib/hooks/useUser";
 import axios from "axios";
 import {LogIn} from "../components/icon/icons";
 
