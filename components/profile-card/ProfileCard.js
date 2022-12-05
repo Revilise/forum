@@ -2,7 +2,6 @@ import cl from './profile-card.module.scss';
 import Icons from '../icon/icons';
 import {useState} from "react";
 import useUser from "../../lib/hooks/useUser";
-import axios from "axios";
 
 export default function ProfileCard({
     user = {
@@ -26,18 +25,23 @@ export default function ProfileCard({
     };
 
     const uploadToServer = async () => {
-        const body = new FormData();
-        body.append(_user.name, image);
-        await axios.post(
-            '/api/file', body
-        )
+        if (image) {
+            const body = new FormData();
+            body.append("file", image);
+            const response = await fetch("/api/file", {
+                method: "POST",
+                body,
+            });
+
+            console.log(response);
+        }
     };
 
     return (
         <div className={cl.container}>
             <header className={cl.header}>
                 <label htmlFor="file" className={cl.label}>
-                    <input type="file" id="file" onClick={uploadToClient} className={cl.file}/>
+                    <input type="file" id="file" onChange={uploadToClient} className={cl.file}/>
                     <svg className={cl.avatar}>
                         <pattern id={"image"} width="100%" height="100%">
                             <image xlinkHref={user.filepath}/>
@@ -47,6 +51,7 @@ export default function ProfileCard({
                     <button onClick={uploadToServer}>upload</button>
                 </label>
                 <div>
+                    <src src={createObjectURL} />
                     <h3>{user.name}</h3>
                     <p>{user.bio}</p>
                 </div>
