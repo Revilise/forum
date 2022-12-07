@@ -18,6 +18,8 @@ export default function ProfileCard({
     const [createObjectURL, setCreateObjectURL] = useState(null);
     const { user: _user } = useUser({ redirectTo: '/login' });
 
+    console.log(_user);
+
     const uploadToClient = async (event) => {
         if (event.target.files && event.target.files[0]) {
             const i = event.target.files[0];
@@ -51,18 +53,18 @@ export default function ProfileCard({
                         </pattern>
                         <rect fill={"url(#image)"}/>
                     </svg>
-                    <button onClick={uploadToServer}>upload</button>
                 </label>
                 <div>
                     <src src={createObjectURL} />
                     <h3>{user.name}</h3>
+                    <p>{user.nickname}</p>
                     <p>{user.bio}</p>
                 </div>
             </header>
             {
                 editable ?
                     <div className={cl.fixed}>
-                        <button className={cl.button}>
+                        <button className={cl.button} onClick={uploadToServer}>
                             <Icons.Edit/>
                         </button>
                     </div> :

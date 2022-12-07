@@ -1,14 +1,14 @@
 import ConferenceList from "./ConferenceList";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {selectConfig, setConferences} from "./ConferenceListSlice";
 import axios from "axios";
 
 export default function ConferenceListAPI({
     route = "get-list"
 }) {
-    const { conferences, filters } = useSelector(selectConfig);
-    const dispatch = useDispatch();
+    const { filters } = useSelector(selectConfig);
+    const [conferences, setConferences] = useState([]);
 
     useEffect(() => {
         let query = ""
@@ -17,7 +17,7 @@ export default function ConferenceListAPI({
         }
 
         axios.get(process.env.NEXT_PUBLIC_APP_HOSTNAME+`/api/conferences/${route}/${query}`).then(res => {
-            dispatch(setConferences(res.data))
+            setConferences(res.data)
         })
     }, [filters])
 

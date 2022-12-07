@@ -13,8 +13,8 @@ export const ConferenceListSlice = createSlice({
         setFilters: (state, action) => {
             state.filters = action.payload;
         },
-        setConferences: (state, aciton) => {
-            state.conferences = aciton.payload;
+        setConferences: (state, action) => {
+            state.conferences = [...action.payload];
         }
     }
 })

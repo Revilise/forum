@@ -12,7 +12,8 @@ async function LoginRoute(req, res) {
                    r.name as role,
                    user_id as id,
                    user_name as name,
-                   f.file_path as filepath
+                   f.file_path as filepath,
+                   user_nickname as nickname
                 FROM users
                 JOIN roles r on users.role_id = r.role_id
                 JOIN files f on users.avatar_id = f.file_id

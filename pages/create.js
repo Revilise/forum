@@ -5,9 +5,9 @@ import redirectUnauthorized from "../lib/auth/redirectUnauthorized";
 
 export const getServerSideProps = redirectUnauthorized;
 
-export default function CreatePage() {
+export default function CreatePage({user}) {
     return (
-        <Layout title={"create"} sidebar={roleTypes.user}>
+        <Layout title={"create"} user={user} isSidebar={true}>
             <Layout.Content>
                 <ConferenceEditor />
             </Layout.Content>
