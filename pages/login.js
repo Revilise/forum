@@ -5,6 +5,8 @@ import {useState} from "react";
 import useUser from "../lib/hooks/useUser";
 import axios from "axios";
 import {LogIn} from "../components/icon/icons";
+import {useDispatch} from "react-redux";
+import {togglePopupVisiblity} from "../features/popup/PopupSlice";
 
 export default function LoginPage() {
 
@@ -12,6 +14,8 @@ export default function LoginPage() {
         redirectTo: '/',
         redirectIfFound: true
     });
+
+    const dispatch = useDispatch();
 
     async function onsubmit() {
         mutateUser(
@@ -24,6 +28,9 @@ export default function LoginPage() {
                     .then(res => res.data)
 
                 if (res.isLogged) return res;
+
+                // if isLogged === false show auth error
+                dispatch(togglePopupVisiblity(true))
             })()
         )
     }
