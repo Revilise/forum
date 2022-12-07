@@ -30,9 +30,11 @@ export default function Item({
     return (
         <div className={cl.item}>
             <div onClick={redirect} className={cl.item_content}>
-                <h3>{title}</h3>
+                <header className={cl.header}>
+                    <h3>{title}</h3>
+                    <div className={cl.total}>{total}</div>
+                </header>
                 <span>{datetime}</span>
-                <p>{total}</p>
                 <p>{text.length > 255 ? text.substring(0, 140) + " ..." : text }</p>
             </div>
             <VotePanel voteHandle={onVote} conference_id={conference_id} vote={vote} />

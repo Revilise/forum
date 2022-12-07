@@ -20,3 +20,17 @@
     gap: 8px;
   }
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total {
+  font-size: 18px;
+  font-family: Gilroy-Regular;
+  padding: 4px 16px;
+  background: #2E2E31;
+  border-radius: 8px;
+  width: fit-content;
+}
