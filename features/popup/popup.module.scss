@@ -1,0 +1,16 @@
+@import 'styles/mixins/container';
+
+.before {
+  position: absolute;
+  width: 100vw;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  @include container;
+  padding: 24px;
+}

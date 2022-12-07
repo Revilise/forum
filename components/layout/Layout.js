@@ -1,7 +1,6 @@
 import cl from './layout.module.scss';
 import Head from "next/head";
 import SidebarFactory from "../sidebar/Sidebar";
-import {roleTypes} from "../../lib/roles/roleTypes";
 
 export default function Layout({children, title, user, isSidebar}) {
     return (
