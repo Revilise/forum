@@ -2,6 +2,7 @@ import cl from './profile-card.module.scss';
 import Icons from '../icon/icons';
 import {useState} from "react";
 import useUser from "../../lib/hooks/useUser";
+import {useRouter} from "next/router";
 
 export default function ProfileCard({
     user = {
@@ -11,6 +12,8 @@ export default function ProfileCard({
     },
     editable = false
 }) {
+    const router = useRouter();
+
     const [image, setImage] = useState(null);
     const [createObjectURL, setCreateObjectURL] = useState(null);
     const { user: _user } = useUser({ redirectTo: '/login' });
@@ -33,7 +36,7 @@ export default function ProfileCard({
                 body,
             });
 
-            console.log(response);
+            router.reload(window.location.pathname)
         }
     };
 
