@@ -17,6 +17,5 @@ export default async function UserRoute(req, res) {
         `,
         values: [id]
     })
-        .then(data => res.json(data.rows[0]))
-        // .catch(err => res.status(500));
+    .then(data => res.json(data.rows[0]))
 }

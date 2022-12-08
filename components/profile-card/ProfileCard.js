@@ -16,9 +16,7 @@ export default function ProfileCard({
 
     const [image, setImage] = useState(null);
     const [createObjectURL, setCreateObjectURL] = useState(null);
-    const { user: _user } = useUser({ redirectTo: '/login' });
-
-    console.log(_user);
+    const { user: _user, mutateUser } = useUser({redirectTo: "/login"});
 
     const uploadToClient = async (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -42,6 +40,7 @@ export default function ProfileCard({
         }
     };
 
+    console.log(_user);
     return (
         <div className={cl.container}>
             <header className={cl.header}>

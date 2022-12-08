@@ -13,29 +13,33 @@ export const config = {
 const fileRoute = async (req, res) => {
     const form = new formidable.IncomingForm();
 
-    await form.parse(req, async (err, fields, files) => {
-        if (err) {
-            console.log(err);
-        }
+    form.parse(req,async (err, fields, files) => {
         const ext = files.file.mimetype === 'image/png' ? 'png' : 'jpg'
 
         const path = `./public/uploads/${req.session.user.id}.${ext}`;
-        await saveFile(files.file, path);
-
-        pool.query({
-            text: "CALL ChangeUserAvatar($1, $2)",
-            values: [`${req.session.user.id}.${ext}`, req.session.user.id]
-        })
-        return;
+        saveFile(files.file, path)
+            .then(() => {
+                pool.query({
+                    text: "CALL ChangeUserAvatar($1, $2)",
+                    values: [`${req.session.user.id}.${ext}`, req.session.user.id]
+                })
+            })
+            .then(async () => {
+                req.session.user.filepath = `/uploads/${req.session.user.id}.${ext}`;
+                await req.session.save();
+                res.json(req.session.user);
+            });
     });
-
-    res.json();
 };
 
 const saveFile = async (file, path) => {
-    const data = fs.readFileSync(file.filepath);
-    fs.writeFileSync(path, data);
-    await fs.unlinkSync(file.filepath);
+    return new Promise((res, rej) => {
+        const data = fs.readFileSync(file.filepath);
+        fs.writeFileSync(path, data);
+        fs.unlinkSync(file.filepath);
+        res('resolved')
+    })
+
 };
 
 export default withIronSessionApiRoute(fileRoute, sessionOptions)
