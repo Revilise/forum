@@ -9,7 +9,7 @@ export const getServerSideProps = redirectUnauthorized;
 
 export default function PartInPage({user}) {
     return (
-        <Layout  user={user} isSidebar={true}>
+        <Layout title={"forum/part in"} user={user} >
             <Layout.Content>
                 <Layout.HorizontalPanel>
                     <SearchAPI />

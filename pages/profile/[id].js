@@ -13,7 +13,7 @@ export default function Profile() {
     const { data: user } = useSWR(`/api/user/${id}`);
 
     return (
-        <Layout sidebar={roleTypes.user}>
+        <Layout title={user?.name } user={user}>
             <Layout.Content>
                 <ProfileCard user={user} />
             </Layout.Content>

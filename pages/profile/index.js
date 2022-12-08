@@ -6,7 +6,7 @@ export const getServerSideProps = redirectUnauthorized;
 
 export default function Profile({user}) {
     return (
-        <Layout isSidebar={true} user={user}>
+        <Layout title={user.name} user={user}>
            <Layout.Content>
                <ProfileCard user={user} editable={true} />
            </Layout.Content>

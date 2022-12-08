@@ -1,21 +1,31 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    isVisible: false
+    isVisible: false,
+    content: {
+        header: "",
+        text: ""
+    }
 }
 
 export const PopupSlice = createSlice({
     name: 'popup',
     initialState,
     reducers: {
-        togglePopupVisiblity: (state, action) => {
-            state.isVisible = action.payload;
+        closePopup: (state) => {
+            state.isVisible = false;
+        },
+
+        showPopup: (state, action) => {
+            state.content = action.payload;
+            state.isVisible = true;
         }
     }
 })
 
-export const { togglePopupVisiblity } = PopupSlice.actions;
+export const { closePopup, showPopup } = PopupSlice.actions;
 
-export const selectIsVisible = (state) => state.popup.isVisible;
+export const selectIsPopupVisible = (state) => state.popup.isVisible;
+export const selectContent = (state) => state.popup.content;
 
 export default PopupSlice.reducer;

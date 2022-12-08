@@ -9,13 +9,13 @@ export const getServerSideProps = redirectUnauthorized;
 
 export default function IndexPage({user}) {
     return (
-        <Layout title={"forum"} user={user} isSidebar={true}>
+        <Layout title={"forum/all"} user={user}>
             <Layout.Content>
                 <Layout.HorizontalPanel>
-                    <SearchAPI />
-                    <BreadcrumbAPI />
+                    <SearchAPI/>
+                    <BreadcrumbAPI/>
                 </Layout.HorizontalPanel>
-                <ConferenceListAPI />
+                <ConferenceListAPI/>
             </Layout.Content>
         </Layout>
     )

@@ -7,9 +7,9 @@ function Form({children, title}) {
     return (
         <form onSubmit={e => e.preventDefault()} className={cl.form}>
             <header className={cl.form_header}>
-                <Logo level={2} />
+                <Logo level={2}/>
             </header>
-            <Line />
+            <Line/>
             <h3>{title}</h3>
             {children}
         </form>

@@ -1,17 +1,28 @@
 @import 'styles/mixins/container';
+@import "styles/mixins/flex";
 
 .before {
   position: absolute;
   width: 100vw;
   min-height: 100vh;
   background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
   z-index: 1000;
 }
 
 .container {
   @include container;
+  @include vertical-flex;
   padding: 24px;
+  gap: 8px;
+  grid-column-start: 3;
+  grid-column-end: 7;
+  align-self: center;
+  height: fit-content;
+}
+
+.header {
+  @include flex;
+  justify-content: space-between;
 }

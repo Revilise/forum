@@ -3,13 +3,13 @@ import Head from "next/head";
 import SidebarFactory from "../sidebar/Sidebar";
 import Popup from "../../features/popup/Popup";
 import {useSelector} from "react-redux";
-import {selectIsVisible} from "../../features/popup/PopupSlice";
+import {selectIsPopupVisible} from "../../features/popup/PopupSlice";
 
-export default function Layout({children, title, user, isSidebar}) {
+export default function Layout({children, title, user}) {
 
-    const isPopupVisible = useSelector(selectIsVisible);
+    const isPopupVisible = useSelector(selectIsPopupVisible);
     return (
-        <div className={cl.layout}>
+        <Grid equalColumns={!user}>
             <Head>
                 <title>{title}</title>
             </Head>
@@ -17,10 +17,10 @@ export default function Layout({children, title, user, isSidebar}) {
                 isPopupVisible ? <Popup /> : <></>
             }
             {
-                isSidebar ? <SidebarFactory user={user} /> : <></>
+                user ? <SidebarFactory user={user} /> : <></>
             }
             { children }
-        </div>
+        </Grid>
     )
 }
 
@@ -34,3 +34,14 @@ Layout.HorizontalPanel = ({children}) => (
         {children}
     </div>
 )
+
+function Grid({equalColumns, children}) {
+    return equalColumns ?
+        <div className={cl.layout__equal}>
+            {children}
+        </div>
+        :
+        <div className={cl.layout}>
+            {children}
+        </div>
+}

@@ -6,7 +6,7 @@ export const getServerSideProps = redirectUnauthorized;
 
 export default function Settings({user}) {
     return (
-        <Layout isSidebar={true} user={user}>
+        <Layout user={user}>
             <Layout.Content>
                 settings
             </Layout.Content>

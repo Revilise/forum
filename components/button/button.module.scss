@@ -1,0 +1,7 @@
+@import "styles/mixins/button";
+
+.button {
+  @include btn;
+  width: fit-content;
+  padding: 4px 16px;
+}

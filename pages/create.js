@@ -7,7 +7,7 @@ export const getServerSideProps = redirectUnauthorized;
 
 export default function CreatePage({user}) {
     return (
-        <Layout title={"create"} user={user} isSidebar={true}>
+        <Layout title={"create"} user={user}>
             <Layout.Content>
                 <ConferenceEditor />
             </Layout.Content>

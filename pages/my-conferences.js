@@ -8,7 +8,7 @@ export const getServerSideProps = redirectUnauthorized;
 
 export default function MyConferencesPage({user}) {
     return (
-        <Layout user={user} isSidebar={true}>
+        <Layout title={"forum/my conferences"} user={user}>
             <Layout.Content>
                 <Layout.HorizontalPanel>
                     <SearchAPI />
