@@ -4,7 +4,6 @@ import axios from "axios";
 import React from 'react';
 import useUser from "../../lib/hooks/useUser";
 import Avatar from "../avatar/Avatar";
-import Router from "next/router";
 
 const Navigation = ({children}) => {
     const { user, mutateUser } = useUser({ redirectTo: "/login" });
