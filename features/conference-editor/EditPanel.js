@@ -4,6 +4,7 @@ import Line from "../../components/line/Line";
 import {useDispatch, useSelector} from "react-redux";
 import {clearAll, selectConference} from "./ConferenceEditorSlice";
 import axios from "axios";
+import {showPopup} from "../popup/PopupSlice";
 
 const Button = ({
    children = <></>, onClick
@@ -29,7 +30,12 @@ export default function EditPanel() {
                         )
                         .then(() => dispatch(clearAll()))
                         .catch((err) => console.error(err))
+                    return;
                 }
+                dispatch(showPopup({
+                    header: "ERROR",
+                    text: "Can not create conference with empty title or empty content."
+                }))
             }
         },
         {
