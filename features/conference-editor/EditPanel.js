@@ -28,7 +28,13 @@ export default function EditPanel() {
 
                             { title, text }
                         )
-                        .then(() => dispatch(clearAll()))
+                        .then(() => {
+                            dispatch(clearAll())
+                            dispatch(showPopup({
+                                header: "SUCCESS",
+                                text: "Conference created."
+                            }))
+                        })
                         .catch((err) => console.error(err))
                     return;
                 }
